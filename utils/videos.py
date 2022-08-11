@@ -59,3 +59,14 @@ def save_data(subreddit: str, filename: str, reddit_title: str, reddit_id: str, 
         done_vids.append(payload)
         raw_vids.seek(0)
         json.dump(done_vids, raw_vids, ensure_ascii=False, indent=4)
+    with open("./upload/current_vid.json", "r+" , encoding="utf-8") as current_vids:
+        payload = {
+            "subreddit": subreddit,
+            "id": reddit_id,
+            "time": str(int(time.time())),
+            "background_credit": credit,
+            "reddit_title": reddit_title,
+            "filename": filename,
+        }
+        json.dump(payload, current_vids, ensure_ascii=False, indent=4)
+

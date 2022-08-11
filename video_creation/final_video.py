@@ -129,9 +129,9 @@ def make_final_video(
     filename = f"{name_normalize(title)[:251]}.mp4"
     subreddit = settings.config["reddit"]["thread"]["subreddit"]
 
-    if not exists(f"./results/{subreddit}"):
+    if not exists(f"./results"):
         print_substep("The results folder didn't exist so I made it")
-        os.makedirs(f"./results/{subreddit}")
+        os.makedirs(f"./results")
 
     # if settings.config["settings"]['background']["background_audio"] and exists(f"assets/backgrounds/background.mp3"):
     #    audioclip = mpe.AudioFileClip(f"assets/backgrounds/background.mp3").set_duration(final.duration)
@@ -155,7 +155,7 @@ def make_final_video(
         f"assets/temp/{id}/temp.mp4",
         0,
         length,
-        targetname=f"results/{subreddit}/{filename}",
+        targetname=f"results/{filename}",
     )
     save_data(subreddit, filename, title, idx, background_config[2])
     print_step("Removing temporary files 🗑")

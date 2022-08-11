@@ -21,6 +21,7 @@ from video_creation.background import (
 from video_creation.final_video import make_final_video
 from video_creation.screenshot_downloader import download_screenshots_of_reddit_posts
 from video_creation.voices import save_text_to_mp3
+import upload.upload_video as upload
 
 __VERSION__ = "2.4.1"
 
@@ -52,7 +53,7 @@ def main(POST_ID=None):
     download_background(bg_config)
     chop_background_video(bg_config, length, reddit_object)
     make_final_video(number_of_comments, length, reddit_object, bg_config)
-
+    upload.main_upload()
 
 def run_many(times):
     for x in range(1, times + 1):
